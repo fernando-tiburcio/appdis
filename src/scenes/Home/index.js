@@ -10,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function Home() {
   const navigation = useNavigation();
 
-  const [city, setCity] = useState(false);
+  const [city, setCity] = useState("");
   const [uf, setUf] = useState("São Paulo");
   const [weather, setWeather] = useState("");
   const [itsRainy, setItsRainy] = useState(false);
@@ -77,6 +77,7 @@ export default function Home() {
     const results = await Location.reverseGeocodeAsync(coords);
     setCity(results[0].city || results[0].district);
     setUf(results[0].region);
+    setLoading(false);
   }
 
   async function getGeolocation() {
@@ -86,14 +87,12 @@ export default function Home() {
       const { latitude, longitude } = location.coords;
       getCityName(location.coords);
       setGeoLocation(`${latitude}, ${longitude}`);
-      setLoading(false);
     }
   }
 
   async function getLocationPermission() {
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
-      setLocationPermission(false);
       setLoading(false);
     } else if (status === "granted") {
       getGeolocation();
@@ -101,6 +100,7 @@ export default function Home() {
   }
 
   useEffect(() => {
+    console.log("=== DEBUG use effect fetch geo permission === ");
     async function fetchGeoPermission() {
       await getLocationPermission();
     }
@@ -108,10 +108,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    console.log("=== DEBUG use effect handle form finished === ");
     if (finished) {
       handleFormFinished();
     }
   }, [finished]);
+
+  console.log("=== DEBUG renderizou === ");
 
   return (
     <View style={styles.container}>
