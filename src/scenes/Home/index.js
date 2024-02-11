@@ -18,7 +18,7 @@ export default function Home() {
   const [floodedPlace, setFloodedPlace] = useState("");
   const [locationPermission, setLocationPermission] = useState(false);
   const [geoLocation, setGeoLocation] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [finished, setFinished] = useState(false);
 
   const cities = ["São Carlos", "São Paulo"];
@@ -82,15 +82,21 @@ export default function Home() {
 
   async function getGeolocation() {
     setLocationPermission(true);
-    const location = await Location.getCurrentPositionAsync();
-    if (location) {
-      const { latitude, longitude } = location.coords;
-      getCityName(location.coords);
-      setGeoLocation(`${latitude}, ${longitude}`);
+    try {
+      const location = await Location.getCurrentPositionAsync();
+      if (location) {
+        const { latitude, longitude } = location.coords;
+        getCityName(location.coords);
+        return setGeoLocation(`${latitude}, ${longitude}`);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log("🚀 ~ getGeolocation ~ error:", error);
     }
   }
 
   async function getLocationPermission() {
+    setLoading(true);
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
       setLoading(false);
@@ -100,21 +106,17 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log("=== DEBUG use effect fetch geo permission === ");
-    async function fetchGeoPermission() {
+    async function fetchData() {
       await getLocationPermission();
     }
-    fetchGeoPermission();
+    fetchData();
   }, []);
 
   useEffect(() => {
-    console.log("=== DEBUG use effect handle form finished === ");
     if (finished) {
       handleFormFinished();
     }
   }, [finished]);
-
-  console.log("=== DEBUG renderizou === ");
 
   return (
     <View style={styles.container}>

@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 import React, { useState } from "react";
 import { Button, Input, Text } from "@rneui/themed";
 
@@ -12,8 +12,7 @@ export default function TextAreaComponent({ title, handleData }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <Input
-        autoFocus
+      <TextInput
         autoCapitalize="sentences"
         multiline
         textAlignVertical="top"

@@ -18,6 +18,8 @@ const CheckBoxComponent = ({ text, handleCity }) => {
         key={text}
         onIconPress={() => handleCityComponent(text)}
         checked={checked}
+        size={36}
+        uncheckedColor="#333"
       />
     </View>
   );
