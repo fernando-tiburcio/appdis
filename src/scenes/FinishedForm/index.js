@@ -27,14 +27,14 @@ export default function Finished(props) {
       : ({ latitude, longitude } = getMockedCity());
 
     const data = {
-      dateTime: format(new Date(Date.now()), "dd/MM/yyyy HH:mm:ss"),
-      city,
+      data_hora: format(new Date(Date.now()), "dd/MM/yyyy HH:mm:ss"),
+      cidade: city,
       uf,
-      weather,
-      rainyCondition,
-      floodedPlace: floodedPlace || "",
-      mockedLocation,
-      locationPermission,
+      tempo_agora: weather,
+      tipo_chuva: rainyCondition,
+      local_alagado: floodedPlace || "",
+      coordenadas: mockedLocation,
+      autoriza_geo: locationPermission,
     };
     try {
       const db = getFirestore(firebaseApp);
