@@ -24,10 +24,10 @@ export default function Finished(props) {
   function handleForm() {
     const mockedLocation = geoLocation
       ? geoLocation
-      : ({ latitude, longitude } = getMockedCity());
+      : ([latitude, longitude] = getMockedCity());
 
     const data = {
-      data_hora: format(new Date(Date.now()), "dd/MM/yyyy HH:mm:ss"),
+      data_hora: new Date(Date.now()).toLocaleString("pt-br", {}),
       cidade: city,
       uf,
       tempo_agora: weather,
@@ -36,6 +36,8 @@ export default function Finished(props) {
       coordenadas: mockedLocation,
       autoriza_geo: locationPermission,
     };
+    console.log("🚀 ~ handleForm ~ data:", data.data_hora);
+
     try {
       const db = getFirestore(firebaseApp);
       addDoc(collection(db, "geodata"), {
@@ -57,7 +59,10 @@ export default function Finished(props) {
   }
 
   function getMockedCity() {
-    return `${citiesGeolocations[city].latitude}, ${citiesGeolocations[city].longitude}`;
+    return [
+      citiesGeolocations[city].latitude,
+      citiesGeolocations[city].longitude,
+    ];
   }
 
   useEffect(() => {

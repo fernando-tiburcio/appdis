@@ -87,7 +87,7 @@ export default function Home() {
       if (location) {
         const { latitude, longitude } = location.coords;
         getCityName(location.coords);
-        return setGeoLocation(`${latitude}, ${longitude}`);
+        return setGeoLocation([latitude, longitude]);
       }
       setLoading(false);
     } catch (error) {
