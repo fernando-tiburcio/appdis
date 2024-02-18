@@ -36,7 +36,6 @@ export default function Finished(props) {
       coordenadas: mockedLocation,
       autoriza_geo: locationPermission,
     };
-    console.log("🚀 ~ handleForm ~ data:", data.data_hora);
 
     try {
       const db = getFirestore(firebaseApp);
