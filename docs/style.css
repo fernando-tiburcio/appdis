@@ -1,0 +1,21 @@
+html {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 1280px;
+  
+  background-color: #f2f2f2;
+  color: #2a2a2c;
+
+  font-family: 'Roboto';
+  font-size: 1.25rem;
+}
+
+header {
+  text-align: center;
+  margin-top: 48px;
+}
+
+main {
+  padding: 42px;
+}
