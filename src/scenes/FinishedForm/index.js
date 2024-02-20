@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View, AppState } from "react-native";
 
 import { format } from "date-fns";
 import { useNavigation } from "@react-navigation/native";
@@ -43,7 +43,6 @@ export default function Finished(props) {
         ...data,
       }).then(() => {
         console.log("Dados gravados com sucesso");
-        Alert.alert("Sucesso", "Os dados foram enviados com sucesso!!!");
       });
     } catch (error) {
       console.log(error);
@@ -52,9 +51,6 @@ export default function Finished(props) {
         "Ocorreu um problema ao enviar os dados, estamos trabalhando para resolver esse problema o mais rápido possível"
       );
     }
-    setTimeout(() => {
-      navigation.navigate("Disclaimer");
-    }, 3000);
   }
 
   function getMockedCity() {
@@ -67,6 +63,18 @@ export default function Finished(props) {
   useEffect(() => {
     handleForm();
   }, []);
+
+  useEffect(() => {
+    const appState = AppState.addEventListener("change", () => {
+      if (AppState.currentState.match(/background/)) {
+        navigation.navigate("Disclaimer");
+      }
+    });
+
+    return () => {
+      appState.remove();
+    };
+  });
 
   return (
     <View style={styles.container}>
