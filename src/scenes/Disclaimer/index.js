@@ -28,7 +28,7 @@ const Disclaimer = () => {
           Teresina Prado Santos da UFSCar - Universidade Federal de São Carlos.
           {"\n"}
           Solicita-se a participação diária ao menos uma vez durante o período
-          de 18/02/2023 a 03/03/2024.{"\n"}A participação desta pesquisa é
+          de 18/02/2023 a 18/06/2024.{"\n"}A participação desta pesquisa é
           totalmente voluntária e anônima.{"\n"}
           Os dados coletados serão utilizados para a divulgação científica
           através da dissertação de mestrado.{"\n"}O objetivo é tratar dados da
