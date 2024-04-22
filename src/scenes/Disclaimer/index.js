@@ -32,17 +32,20 @@ const Disclaimer = () => {
           <Text style={styles.disclaimer}>
             Este app faz parte de um projeto de pesquisa de mestrado do aluno
             Lucas de Barros Teixeira, com supervisão da Profª Dra. Marilde
-            Teresina Prado Santos da UFSCar - Universidade Federal de São
+            Teresinha Prado Santos da UFSCar - Universidade Federal de São
             Carlos.
             {"\n"}
             Solicita-se a participação diária ao menos uma vez durante o período
             de 18/02/2023 a 18/06/2024.{"\n"}A participação desta pesquisa é
             totalmente voluntária e anônima.{"\n"}
-            Os dados coletados serão utilizados para a divulgação científica
-            através da dissertação de mestrado.{"\n"}O objetivo é tratar dados
-            da avaliação climática realizada em um algoritmo de inteligência
-            artificial, com foco na previsão e mitigação de grandes volumes
-            pluviométricos nas cidades.
+            Os dados serão coletados para serem utilizados em uma proposta
+            inovadora que combina tecnologia e participação voluntária para
+            prever grandes volumes pluviométricos em tempo real. {"\n"} Os
+            resultados serão divulgados em eventos cientificos e consolidados na
+            dissertação de mestrado.{"\n"}O objetivo é tratar os dados de data,
+            horário, localização e informação climáticas em um algoritmo de
+            inteligência artificial, com foco na previsão e mitigação de grandes
+            volumes pluviométricos nas cidades.
             {"\n"}
             Agradecemos a participação na pesquisa, deixamos contato para
             quaisquer dúvidas ou esclarecimentos.{"\n"}

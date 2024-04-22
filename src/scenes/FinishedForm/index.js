@@ -1,15 +1,21 @@
 import React, { useEffect } from "react";
-import { Alert, StyleSheet, Text, View, AppState } from "react-native";
+import {
+  Alert,
+  StyleSheet,
+  Text,
+  View,
+  AppState,
+  BackHandler,
+} from "react-native";
 
-import { format } from "date-fns";
 import { useNavigation } from "@react-navigation/native";
 
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { firebaseApp } from "../../../firebase";
+import RNExitApp from "react-native-exit-app";
 
 export default function Finished(props) {
   const navigation = useNavigation();
-
   const {
     citiesGeolocations,
     city,
@@ -76,9 +82,21 @@ export default function Finished(props) {
     };
   });
 
+  useEffect(() => {
+    navigation.addListener("beforeRemove", (e) => {
+      e.preventDefault();
+      return RNExitApp.exitApp();
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Obrigado pelo registro.</Text>
+      <Text style={styles.title}>Dados Coletados com sucesso</Text>
+      <Text>
+        Continue fazendo a diferença na compreensão climática e colaborando com
+        a Ciência.
+      </Text>
+      <Text style={{ alignSelf: "flex-start", marginTop: 12 }}>Obrigado!</Text>
     </View>
   );
 }
@@ -86,11 +104,13 @@ export default function Finished(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
+    padding: 26,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
+    marginBottom: 16,
+    alignSelf: "center",
   },
 });
