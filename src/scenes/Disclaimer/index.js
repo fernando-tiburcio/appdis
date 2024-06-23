@@ -34,10 +34,8 @@ const Disclaimer = () => {
             Lucas de Barros Teixeira, com supervisão da Profª Dra. Marilde
             Teresinha Prado Santos da UFSCar - Universidade Federal de São
             Carlos.
-            {"\n"}
-            Solicita-se a participação diária ao menos uma vez durante o período
-            de 18/02/2023 a 18/06/2024.{"\n"}A participação desta pesquisa é
-            totalmente voluntária e anônima.{"\n"}
+            {"\n"}A participação desta pesquisa é totalmente voluntária e
+            anônima.{"\n"}
             Os dados serão coletados para serem utilizados em uma proposta
             inovadora que combina tecnologia e participação voluntária para
             prever grandes volumes pluviométricos em tempo real. {"\n"} Os
